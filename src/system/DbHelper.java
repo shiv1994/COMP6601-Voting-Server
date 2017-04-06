@@ -401,11 +401,11 @@ public final class DbHelper{
 
         try{
             // add table identifiers
-            String sql = "SELECT " + "cam." + CampaignContract.NAME_COL + " can." + CandidateContract.NAME_COL + " " +
-                    HistoryContract.WIN_VOTES_COL + " " + HistoryContract.VOTES_CAST_COL + " FROM " + CampaignContract.TABLE_NAME +
-                    " cam " + CandidateContract.TABLE_NAME + " can " + HistoryContract.TABLE_NAME + " WHERE " +
-                    HistoryContract.ID_COL + " = " + CampaignContract.CAMP_ID_COL + " AND " + HistoryContract.WIN_COL +
-                    " = " + CandidateContract.CAND_ID_COL + " ORDER BY " + CampaignContract.END_COL + " ASC" + ";";
+            String sql = "SELECT " + "cam." + CampaignContract.NAME_COL + ", can." + CandidateContract.NAME_COL + ", " +
+                    HistoryContract.WIN_VOTES_COL + ", " + HistoryContract.VOTES_CAST_COL + " FROM " + CampaignContract.TABLE_NAME +
+                    " cam, " + CandidateContract.TABLE_NAME + " can, " + HistoryContract.TABLE_NAME + " WHERE " +
+                    HistoryContract.ID_COL + " = " + "cam." + CampaignContract.CAMP_ID_COL + " AND " + HistoryContract.WIN_COL +
+                    " = " + "can." + CandidateContract.CAND_ID_COL + " ORDER BY " + CampaignContract.END_COL + " ASC" + ";";
 
             stmt = connection.createStatement();
 
