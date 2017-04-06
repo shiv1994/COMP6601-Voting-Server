@@ -111,4 +111,8 @@ public class Campaign implements Serializable{
         setStart(stringToDate(getStartString()));
         setEnd(stringToDate(getEndString()));
     }
+
+    public void emptyCandidates(){
+        candidates = new ArrayList<>();
+    }
 }
