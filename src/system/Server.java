@@ -10,9 +10,7 @@ import javax.net.ServerSocketFactory;
 import javax.net.ssl.SSLServerSocketFactory;
 
 import AdminVoting.AdminVotingInterface;
-import AdminVoting.AdminVotingRemote;
 import ClientVoting.ClientVotingInterface;
-import ClientVoting.ClientVotingRemote;
 import sun.rmi.registry.RegistryImpl;
 
 public class Server implements RMIServerSocketFactory, Serializable{
