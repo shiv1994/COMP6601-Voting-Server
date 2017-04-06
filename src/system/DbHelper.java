@@ -388,4 +388,47 @@ public final class DbHelper{
             }
         }
     }
+
+    public ArrayList<Report> getReports(){
+        Statement stmt = null;
+        ArrayList<Report> report = new ArrayList<>();
+
+        try{
+            // add table identifiers
+            String sql = "SELECT " + "cam." + CampaignContract.NAME_COL + " can." + CandidateContract.NAME_COL + " " +
+                    HistoryContract.WIN_VOTES_COL + " " + HistoryContract.VOTES_CAST_COL + " FROM " + CampaignContract.TABLE_NAME +
+                    " cam " + CandidateContract.TABLE_NAME + " can " + HistoryContract.TABLE_NAME + " WHERE " +
+                    HistoryContract.ID_COL + " = " + CampaignContract.CAMP_ID_COL + " AND " + HistoryContract.WIN_COL +
+                    " = " + CandidateContract.CAND_ID_COL + " ORDER BY " + CampaignContract.END_COL + " ASC" + ";";
+
+            stmt = connection.createStatement();
+
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while(rs.next()){
+                String campName = rs.getString(1);
+                String candName = rs.getString(2);
+                int winVotes = rs.getInt(3);
+                int totVotes = rs.getInt(4);
+
+                Report temp = new Report(campName,candName,winVotes,totVotes);
+                report.add(temp);
+            }
+
+            return report;
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+            return report;
+        }
+        finally {
+            try{
+                if(stmt != null)
+                    stmt.close();
+            }
+            catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+    }
 }
