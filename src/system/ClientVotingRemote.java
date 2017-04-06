@@ -42,7 +42,11 @@ public class ClientVotingRemote extends UnicastRemoteObject implements ClientVot
 	}
 
 	public boolean votingOpen(){
+
 		Campaign active = Server.getActive();
+
+		if(active==null)
+			return false;
 
 		// get current date and time
 		Timestamp curr = new Timestamp(System.currentTimeMillis());
