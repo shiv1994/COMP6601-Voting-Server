@@ -393,7 +393,7 @@ public final class DbHelper{
     public ArrayList<Report> getReports(){
         Statement stmt = null;
         ArrayList<Report> report = new ArrayList<>();
-
+        System.out.println("called");
         try{
             // add table identifiers
             String sql = "SELECT " + "cam." + CampaignContract.NAME_COL + " can." + CandidateContract.NAME_COL + " " +
