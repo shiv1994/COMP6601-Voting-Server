@@ -46,7 +46,6 @@ public class Campaign implements Serializable{
     }
     public Campaign(){
         candidates = new ArrayList<>();
-        candidates.add(new Candidate("test", "test", "test"));
     }
 
     public void setName(String name) {
