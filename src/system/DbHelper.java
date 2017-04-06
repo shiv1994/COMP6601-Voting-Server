@@ -352,7 +352,7 @@ public final class DbHelper{
 
             ResultSet rs = pstmt.executeQuery();
 
-            int firstCheck=0, totalVotes=0, winId=0;
+            int firstCheck=0, totalVotes=0, winId=0, winVotes=0;
 
             // iterate through results of voting campaign and get data to add to history table
             while(rs.next()){
@@ -364,6 +364,7 @@ public final class DbHelper{
                 if(firstCheck == 0){
                     // this is the winner
                     winId = candID;
+                    winVotes = numVotes;
                     firstCheck = 1;
                 }
 
@@ -375,7 +376,8 @@ public final class DbHelper{
             pstmt = connection.prepareStatement(sql);
             pstmt.setInt(1,activeCampId);
             pstmt.setInt(2,winId);
-            pstmt.setInt(3,totalVotes);
+            pstmt.setInt(3,winVotes);
+            pstmt.setInt(4,totalVotes);
 
             pstmt.executeUpdate();
 
