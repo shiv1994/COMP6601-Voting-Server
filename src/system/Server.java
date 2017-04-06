@@ -116,4 +116,17 @@ public class Server implements RMIServerSocketFactory, Serializable{
 		// scheduling task to run when active campaign has ended
 		timer.schedule(ended, active.getEnd());
 	}
+
+	public static void loadCampaignNoneActive(){
+
+		DbHelper dbHelper = new DbHelper();
+		active = dbHelper.getActiveCampaign();
+		dbHelper.closeConnection();
+
+		// schedule end of active campaign
+		if(active != null){
+			// server actually has campaign to load when it comes online so schedule its end
+			scheduleEndCampaign();
+		}
+	}
 }
