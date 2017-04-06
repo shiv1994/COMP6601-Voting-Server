@@ -172,7 +172,8 @@ public final class DbHelper{
                 pstmt = connection.prepareStatement(CandidateContract.insertEntry());
                 pstmt.setString(1,temp.getName());
                 pstmt.setString(2,temp.getDescription());
-                pstmt.setInt(3,key);
+                pstmt.setString(3,temp.getImg());
+                pstmt.setInt(4,key);
 
                 pstmt.executeUpdate();
             }

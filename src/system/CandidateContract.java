@@ -32,7 +32,7 @@ public final class CandidateContract {
             ");";
 
     public static String insertEntry(){
-        String sql = "INSERT INTO " + TABLE_NAME + "(" + NAME_COL + ", " + DESCRIPTION_COL + ", " + CAMP_ID_COL + ") " + "VALUES(?, ?, ?);";
+        String sql = "INSERT INTO " + TABLE_NAME + "(" + NAME_COL + ", " + DESCRIPTION_COL + ", " + IMG_URL_COL + ", " + CAMP_ID_COL + ") " + "VALUES(?, ?, ?, ?);";
 
         return sql;
     }
