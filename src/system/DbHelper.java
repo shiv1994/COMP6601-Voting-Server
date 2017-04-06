@@ -140,6 +140,11 @@ public final class DbHelper{
                     insertCandidates(campaign.getCandidates(), genKey);
                 }
                 System.out.println("Campaign successfully added.");
+
+                // check if there was no active campaign on server and add this one
+                if(Server.getActive() == null)
+                    Server.loadCampaignNoneActive();
+
                 return true;
             }
             else{
